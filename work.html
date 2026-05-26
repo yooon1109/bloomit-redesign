@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bloomit Work - 포트폴리오 갤러리</title>
+    <meta
+      name="description"
+      content="Bloomit의 앱, 웹, 관리자, AI/OCR, 템플릿 포트폴리오를 유형별로 확인할 수 있는 쇼케이스입니다."
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="topline">
+        <div class="container topbar">
+          <span>Project portfolio gallery</span>
+          <a href="inquiry.html">프로젝트 문의</a>
+        </div>
+      </div>
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Bloomit</span>
+        </a>
+        <nav class="nav-links" aria-label="주요 메뉴">
+          <a href="index.html#services">Services</a>
+          <a href="work.html">Work</a>
+          <a href="templates/index.html">Templates</a>
+          <a href="index.html#process">Process</a>
+        </nav>
+        <a class="button primary" href="inquiry.html">프로젝트 문의</a>
+      </div>
+    </header>
+
+    <main class="work-page">
+      <section class="work-hero">
+        <div class="container">
+          <p class="eyebrow">Work gallery</p>
+          <h1>서비스 화면과 운영 구조를 함께 보여주는 포트폴리오.</h1>
+          <p>
+            단순한 썸네일 나열이 아니라, 프로젝트 유형과 핵심 기능을 빠르게
+            비교할 수 있도록 정리했습니다. 실제 데모가 준비되는 항목은 이
+            갤러리에 계속 추가됩니다.
+          </p>
+        </div>
+      </section>
+
+      <section class="work-gallery">
+        <div class="container work-layout">
+          <aside class="work-filter" aria-label="포트폴리오 필터">
+            <div class="filter-head">
+              <strong>필터</strong>
+              <span>8개 표시</span>
+            </div>
+            <div class="filter-group">
+              <p>유형</p>
+              <a class="is-active" href="#all">전체 <span>8</span></a>
+              <a href="#product">제품 개발 <span>4</span></a>
+              <a href="#templates">템플릿 <span>4</span></a>
+            </div>
+            <div class="filter-group">
+              <p>분류</p>
+              <a href="#app">앱</a>
+              <a href="#admin">관리자</a>
+              <a href="#ai">AI/OCR</a>
+              <a href="#website">홍보 홈페이지</a>
+            </div>
+          </aside>
+
+          <section class="work-grid" id="all" aria-label="포트폴리오 목록">
+            <a class="work-card product-card" href="cases/goody.html">
+              <div class="work-thumb goody-thumb">
+                <div class="phone-ui"><span></span><b></b><b></b><b></b></div>
+              </div>
+              <div class="work-body">
+                <span>Mobile app</span>
+                <h2>Goody 굿즈 거래 앱</h2>
+                <p>상품 등록, 채팅, 거래 상태, 후기, 알림이 이어지는 거래형 MVP</p>
+                <ul><li>거래</li><li>채팅</li><li>알림</li></ul>
+              </div>
+            </a>
+
+            <a class="work-card product-card" href="cases/maltmap.html">
+              <div class="work-thumb malt-thumb">
+                <div class="browser-ui"><span></span><i></i><i></i><i></i></div>
+              </div>
+              <div class="work-body">
+                <span>Discovery web</span>
+                <h2>몰트맵 검색·비교 서비스</h2>
+                <p>상품 검색, 가격 비교, 필터, 관심 상품 저장을 중심으로 한 탐색형 웹</p>
+                <ul><li>검색</li><li>비교</li><li>필터</li></ul>
+              </div>
+            </a>
+
+            <a class="work-card product-card" href="cases/modu-stock.html">
+              <div class="work-thumb stock-thumb">
+                <div class="content-ui"><b></b><b></b><b></b><b></b></div>
+              </div>
+              <div class="work-body">
+                <span>Content product</span>
+                <h2>모두의 주식 요약 피드</h2>
+                <p>관심 종목 기반 요약 카드, 콘텐츠 추천, 관리자 검수 흐름</p>
+                <ul><li>요약</li><li>추천</li><li>관리자</li></ul>
+              </div>
+            </a>
+
+            <a class="work-card product-card" href="cases/eolmaji.html">
+              <div class="work-thumb ocr-thumb">
+                <div class="scan-ui"><span></span><em></em><b></b></div>
+              </div>
+              <div class="work-body">
+                <span>AI/OCR</span>
+                <h2>얼마지 OCR 가격 탐색</h2>
+                <p>이미지 인식, 결과 보정, 검색어 생성, 가격 후보 노출 플로우</p>
+                <ul><li>OCR</li><li>AI API</li><li>검색</li></ul>
+              </div>
+            </a>
+
+            <a class="work-card template-work" href="templates/preview/clinic-care.html">
+              <div class="work-thumb clinic-template"><strong>Clinic</strong></div>
+              <div class="work-body">
+                <span>Website template</span>
+                <h2>Clinic Care Template</h2>
+                <p>진료 과목, 의료진, 예약 CTA, 위치 안내 중심의 병원형 홈페이지</p>
+                <ul><li>클리닉</li><li>예약</li><li>FAQ</li></ul>
+              </div>
+            </a>
+
+            <a class="work-card template-work" href="templates/preview/fit-studio.html">
+              <div class="work-thumb fitness-template"><strong>Fitness</strong></div>
+              <div class="work-body">
+                <span>Website template</span>
+                <h2>Fit Studio Template</h2>
+                <p>프로그램, 트레이너, 체험 신청, 후기 중심의 운동 스튜디오 템플릿</p>
+                <ul><li>PT</li><li>필라테스</li><li>체험 신청</li></ul>
+              </div>
+            </a>
+
+            <a class="work-card template-work" href="templates/preview/local-cafe.html">
+              <div class="work-thumb cafe-template"><strong>Cafe</strong></div>
+              <div class="work-body">
+                <span>Website template</span>
+                <h2>Local Cafe Template</h2>
+                <p>메뉴, 매장 사진, 영업시간, 예약/주문 링크를 강조하는 로컬 매장형</p>
+                <ul><li>메뉴</li><li>지도</li><li>SNS</li></ul>
+              </div>
+            </a>
+
+            <a class="work-card template-work" href="templates/preview/expert-office.html">
+              <div class="work-thumb expert-template"><strong>Expert</strong></div>
+              <div class="work-body">
+                <span>Website template</span>
+                <h2>Expert Office Template</h2>
+                <p>전문 분야, 상담 절차, 사례, 자격 정보로 신뢰를 만드는 전문가형</p>
+                <ul><li>상담</li><li>사례</li><li>신뢰</li></ul>
+              </div>
+            </a>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <strong>Bloomit Work</strong>
+        <span>제품 개발 · 관리자 · AI/OCR · 업종별 템플릿</span>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
