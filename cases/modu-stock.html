@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>모두의 주식 케이스 스터디 - Bloomit</title>
+    <meta name="description" content="투자 콘텐츠 요약과 관심 종목 기반 콘텐츠 흐름을 정리한 Bloomit 포트폴리오 상세 페이지입니다." />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="topline">
+        <div class="container topbar">
+          <span>Portfolio case study</span>
+          <a href="../inquiry.html">프로젝트 문의</a>
+        </div>
+      </div>
+      <div class="container nav">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Bloomit</span>
+        </a>
+        <nav class="nav-links" aria-label="주요 메뉴">
+          <a href="../index.html#services">Services</a>
+          <a href="../index.html#examples">Examples</a>
+          <a href="../index.html#process">Process</a>
+        </nav>
+        <a class="button secondary" href="../index.html#examples">목록으로</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="case-hero">
+        <div class="container case-hero-grid">
+          <div>
+            <p class="eyebrow">Content product</p>
+            <h1>모두의 주식 - 관심 종목 기반 콘텐츠 요약</h1>
+            <p>
+              금융 콘텐츠는 양이 많고 갱신 속도가 빠릅니다. 사용자는 모든
+              글을 읽기보다 내 관심 종목과 관련된 핵심만 먼저 보고 싶어합니다.
+              이 사례는 콘텐츠를 단순 축적이 아니라 판단을 돕는 화면 흐름으로
+              바꾸는 방식에 집중했습니다.
+            </p>
+          </div>
+          <aside class="case-summary">
+            <img src="../assets/images/modu-stock-icon.png" alt="모두의 주식 앱 아이콘" />
+            <dl>
+              <div><dt>유형</dt><dd>콘텐츠 앱 / 요약 서비스</dd></div>
+              <div><dt>범위</dt><dd>요약 카드, 관심 종목, 콘텐츠 추천</dd></div>
+              <div><dt>기간 예시</dt><dd>4~7주 MVP</dd></div>
+              <div><dt>핵심 가치</dt><dd>긴 콘텐츠를 읽기 전 판단 정보 제공</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section class="case-detail">
+        <div class="container case-detail-grid">
+          <article class="case-main">
+            <section>
+              <h2>문제 정의</h2>
+              <p>
+                투자 관련 콘텐츠는 제목만으로는 중요한 정보를 판단하기 어렵고,
+                본문은 길어 모바일에서 읽기 부담스럽습니다. 특히 관심 종목이
+                정해져 있는 사용자는 전체 콘텐츠 피드보다 “내 종목과 관련된
+                변화”를 먼저 보고 싶어합니다.
+              </p>
+              <p>
+                그래서 핵심 목표를 콘텐츠 생산량 확대가 아니라, 콘텐츠를
+                요약하고 사용자 관심사와 연결해 소비 시간을 줄이는 것으로
+                정의했습니다.
+              </p>
+            </section>
+
+            <section>
+              <h2>접근 방식</h2>
+              <div class="case-steps">
+                <div><span>01</span><strong>요약 카드 설계</strong><p>본문 전체를 보기 전에 핵심 이슈, 관련 종목, 긍정/부정 포인트를 카드로 확인하게 했습니다.</p></div>
+                <div><span>02</span><strong>관심 종목 연결</strong><p>사용자가 저장한 종목과 관련된 콘텐츠를 우선 노출하는 구조로 피드 우선순위를 잡았습니다.</p></div>
+                <div><span>03</span><strong>관리 가능한 콘텐츠 구조</strong><p>관리자가 콘텐츠를 등록하고 요약 결과를 검수할 수 있는 운영 흐름을 고려했습니다.</p></div>
+              </div>
+            </section>
+
+            <section>
+              <h2>구현 범위</h2>
+              <ul class="case-bullets">
+                <li>콘텐츠 목록, 상세, 요약 카드 UI</li>
+                <li>관심 종목 등록과 종목별 콘텐츠 필터</li>
+                <li>관련 키워드, 종목 태그, 콘텐츠 추천 흐름</li>
+                <li>AI 요약 결과를 검토하고 수정할 수 있는 관리자 구조</li>
+                <li>사용자가 저장한 콘텐츠를 다시 확인할 수 있는 북마크 흐름</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2>산출물</h2>
+              <div class="deliverable-grid">
+                <div><strong>사용자 화면</strong><span>요약 피드, 상세, 관심 종목, 저장 목록</span></div>
+                <div><strong>AI 연동</strong><span>요약 프롬프트, 결과 검수, 키워드 추출</span></div>
+                <div><strong>관리자</strong><span>콘텐츠 등록, 요약 수정, 노출 관리</span></div>
+              </div>
+            </section>
+          </article>
+
+          <aside class="case-sidebar">
+            <h2>핵심 포인트</h2>
+            <ul>
+              <li>AI 요약은 결과를 그대로 노출하기보다 검수 흐름이 필요합니다.</li>
+              <li>관심 종목 같은 개인화 기준이 있어야 콘텐츠 피드가 유용해집니다.</li>
+              <li>콘텐츠 서비스는 사용자 화면과 관리자 화면을 함께 설계해야 운영이 가능합니다.</li>
+            </ul>
+            <a class="button primary" href="../inquiry.html">비슷한 프로젝트 문의</a>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <strong>Bloomit</strong>
+        <a href="../index.html#examples">다른 사례 보기</a>
+      </div>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

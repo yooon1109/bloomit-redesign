@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>몰트맵 케이스 스터디 - Bloomit</title>
+    <meta name="description" content="상품 검색과 가격 비교 서비스의 탐색 흐름을 정리한 Bloomit 포트폴리오 상세 페이지입니다." />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="topline">
+        <div class="container topbar">
+          <span>Portfolio case study</span>
+          <a href="../inquiry.html">프로젝트 문의</a>
+        </div>
+      </div>
+      <div class="container nav">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Bloomit</span>
+        </a>
+        <nav class="nav-links" aria-label="주요 메뉴">
+          <a href="../index.html#services">Services</a>
+          <a href="../index.html#examples">Examples</a>
+          <a href="../index.html#process">Process</a>
+        </nav>
+        <a class="button secondary" href="../index.html#examples">목록으로</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="case-hero">
+        <div class="container case-hero-grid">
+          <div>
+            <p class="eyebrow">Discovery service</p>
+            <h1>몰트맵 - 상품 검색·가격 비교 서비스</h1>
+            <p>
+              탐색형 서비스는 데이터가 많을수록 좋아 보이지만, 사용자가 원하는
+              상품을 빠르게 좁히지 못하면 이탈합니다. 몰트맵 사례는 상품 정보,
+              가격대, 관심 상품을 하나의 탐색 경험으로 묶는 방식에 집중했습니다.
+            </p>
+          </div>
+          <aside class="case-summary text-summary">
+            <div class="summary-initial">MM</div>
+            <dl>
+              <div><dt>유형</dt><dd>웹 서비스 / 상품 탐색</dd></div>
+              <div><dt>범위</dt><dd>검색, 필터, 관심 상품, 가격 비교</dd></div>
+              <div><dt>기간 예시</dt><dd>4~6주 MVP</dd></div>
+              <div><dt>핵심 가치</dt><dd>탐색 피로를 줄이는 정보 구조</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section class="case-detail">
+        <div class="container case-detail-grid">
+          <article class="case-main">
+            <section>
+              <h2>문제 정의</h2>
+              <p>
+                가격 비교형 서비스에서 사용자는 “가장 싼 상품”만 찾는 것이
+                아니라, 조건에 맞는 상품을 빠르게 좁히고 나중에 다시 비교할 수
+                있어야 합니다. 데이터가 단순 리스트로만 제공되면 사용자는 여러
+                페이지를 오가며 같은 비교를 반복하게 됩니다.
+              </p>
+            </section>
+
+            <section>
+              <h2>접근 방식</h2>
+              <div class="case-steps">
+                <div><span>01</span><strong>검색 의도 분리</strong><p>상품명 검색, 카테고리 탐색, 가격대 비교를 서로 다른 진입 흐름으로 정리했습니다.</p></div>
+                <div><span>02</span><strong>비교 기준 고정</strong><p>가격, 판매처, 용량, 평점처럼 반복 확인하는 정보를 카드 안에 일관되게 배치했습니다.</p></div>
+                <div><span>03</span><strong>관심 상품 저장</strong><p>당장 구매하지 않는 사용자가 다시 돌아와 비교할 수 있도록 관심 목록을 설계했습니다.</p></div>
+              </div>
+            </section>
+
+            <section>
+              <h2>구현 범위</h2>
+              <ul class="case-bullets">
+                <li>상품 데이터 목록과 상세 화면 구성</li>
+                <li>카테고리, 가격대, 키워드 기반 필터</li>
+                <li>관심 상품 저장 및 비교 후보 관리</li>
+                <li>판매처별 가격 후보 노출 UI</li>
+                <li>관리자가 상품 정보를 등록, 수정, 비활성화할 수 있는 기본 구조</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2>산출물</h2>
+              <div class="deliverable-grid">
+                <div><strong>탐색 화면</strong><span>검색, 필터, 정렬, 결과 카드</span></div>
+                <div><strong>비교 구조</strong><span>가격 후보, 상품 속성, 관심 목록</span></div>
+                <div><strong>관리자</strong><span>상품 등록, 데이터 보정, 노출 상태 관리</span></div>
+              </div>
+            </section>
+          </article>
+
+          <aside class="case-sidebar">
+            <h2>핵심 포인트</h2>
+            <ul>
+              <li>검색 서비스는 데이터보다 필터 기준이 먼저 정리되어야 합니다.</li>
+              <li>관심 상품은 재방문과 비교 행동을 만드는 중요한 장치입니다.</li>
+              <li>초기에는 자동 수집보다 관리 가능한 데이터 구조가 더 중요할 수 있습니다.</li>
+            </ul>
+            <a class="button primary" href="../inquiry.html">비슷한 프로젝트 문의</a>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <strong>Bloomit</strong>
+        <a href="../index.html#examples">다른 사례 보기</a>
+      </div>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

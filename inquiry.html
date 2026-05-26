@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bloomit - 프로젝트 문의</title>
+    <meta
+      name="description"
+      content="만들고 싶은 웹, 앱, 플랫폼, 관리자, AI 기능의 범위를 선택해 Bloomit에 문의하세요."
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="topline">
+        <div class="container topbar">
+          <span>문의 내용을 고르면 상담 범위가 더 빨리 정리됩니다.</span>
+          <a href="mailto:hello@bloomit.co.kr">hello@bloomit.co.kr</a>
+        </div>
+      </div>
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Bloomit</span>
+        </a>
+        <nav class="nav-links" aria-label="주요 메뉴">
+          <a href="index.html#services">Services</a>
+          <a href="index.html#examples">Examples</a>
+          <a href="index.html#process">Process</a>
+        </nav>
+        <a class="button secondary" href="index.html">사이트로 돌아가기</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="inquiry-hero">
+        <div class="container">
+          <p class="eyebrow">Project inquiry</p>
+          <h1>만들고 싶은 서비스를 간단히 구성해보세요.</h1>
+          <p>
+            정확하지 않아도 괜찮습니다. 아래 내용을 고르면 상담 전에 필요한
+            제작 형태, 기능, 일정, 예산이 자동으로 정리됩니다.
+          </p>
+        </div>
+      </section>
+
+      <section class="inquiry-section">
+        <div class="container inquiry-grid">
+          <form class="inquiry-form" data-inquiry-form>
+            <fieldset>
+              <legend>1. 어떤 형태를 만들고 싶나요?</legend>
+              <div class="choice-grid">
+                <label>
+                  <input type="radio" name="type" value="홈페이지/랜딩 페이지" checked />
+                  <span><strong>홈페이지/랜딩</strong><small>회사 소개, 서비스 소개, 문의 접수</small></span>
+                </label>
+                <label>
+                  <input type="radio" name="type" value="모바일 앱/웹앱" />
+                  <span><strong>모바일 앱/웹앱</strong><small>사용자가 반복해서 쓰는 서비스</small></span>
+                </label>
+                <label>
+                  <input type="radio" name="type" value="플랫폼/마켓플레이스" />
+                  <span><strong>플랫폼</strong><small>예약, 거래, 매칭, 커뮤니티</small></span>
+                </label>
+                <label>
+                  <input type="radio" name="type" value="관리자/업무 프로그램" />
+                  <span><strong>관리자/업무 프로그램</strong><small>내부 운영, 승인, 정산, 조회</small></span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>2. 목적에 가까운 것을 골라주세요.</legend>
+              <div class="purpose-grid" data-purpose-options></div>
+            </fieldset>
+
+            <fieldset>
+              <legend>3. 필요한 기능을 선택해주세요.</legend>
+              <div class="checkbox-grid">
+                <label><input type="checkbox" name="feature" value="회원가입/로그인" />회원가입/로그인</label>
+                <label><input type="checkbox" name="feature" value="문의/신청 접수" />문의/신청 접수</label>
+                <label><input type="checkbox" name="feature" value="관리자 페이지" />관리자 페이지</label>
+                <label><input type="checkbox" name="feature" value="게시글/콘텐츠 등록" />게시글/콘텐츠 등록</label>
+                <label><input type="checkbox" name="feature" value="상품/서비스 검색" />상품/서비스 검색</label>
+                <label><input type="checkbox" name="feature" value="예약/결제" />예약/결제</label>
+                <label><input type="checkbox" name="feature" value="채팅/알림" />채팅/알림</label>
+                <label><input type="checkbox" name="feature" value="파일/이미지 업로드" />파일/이미지 업로드</label>
+                <label><input type="checkbox" name="feature" value="AI 요약/추천" />AI 요약/추천</label>
+                <label><input type="checkbox" name="feature" value="OCR/스캔" />OCR/스캔</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="two-column">
+              <label>
+                예상 일정
+                <select name="timeline">
+                  <option>아직 미정</option>
+                  <option>1개월 이내 상담 필요</option>
+                  <option>1~3개월 내 출시 희망</option>
+                  <option>3개월 이상 장기 프로젝트</option>
+                </select>
+              </label>
+              <label>
+                예상 예산
+                <select name="budget">
+                  <option>아직 미정</option>
+                  <option>500만원 이하</option>
+                  <option>500만~1,500만원</option>
+                  <option>1,500만~3,000만원</option>
+                  <option>3,000만원 이상</option>
+                </select>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <label>
+                간단한 설명
+                <textarea
+                  name="message"
+                  rows="5"
+                  placeholder="예: 이미지로 상품을 인식하고 가격을 비교하는 앱을 만들고 싶습니다. 관리자에서 상품 데이터를 확인하고 싶습니다."
+                ></textarea>
+              </label>
+            </fieldset>
+          </form>
+
+          <aside class="summary-panel">
+            <h2>문의 내용 요약</h2>
+            <pre data-summary tabindex="0"></pre>
+            <div class="summary-actions">
+              <a class="button primary" data-mailto href="#">메일로 문의하기</a>
+              <button class="button secondary" type="button" data-copy-summary>
+                요약 복사
+              </button>
+            </div>
+            <p>
+              수신 메일은 임시로 <strong>hello@bloomit.co.kr</strong>로 설정되어
+              있습니다.
+            </p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <strong>Bloomit</strong>
+        <a href="index.html">사이트로 돌아가기</a>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
