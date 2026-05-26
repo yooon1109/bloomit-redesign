@@ -27,6 +27,11 @@
       ".cta-panel",
       "fieldset",
       ".summary-panel",
+      ".template-card",
+      ".included-list div",
+      ".template-process li",
+      ".price-card",
+      ".store-section-head",
     ]
       .map((selector) => [...document.querySelectorAll(selector)])
       .flat();

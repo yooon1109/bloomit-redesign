@@ -495,6 +495,37 @@ p {
   font-weight: 850;
 }
 
+.template-bridge {
+  padding: 42px 0;
+  background: var(--green-dark);
+  color: #fff;
+}
+
+.bridge-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 34px;
+  align-items: center;
+}
+
+.bridge-grid .eyebrow {
+  color: #8fd4c9;
+}
+
+.bridge-grid h2 {
+  max-width: 760px;
+  margin-bottom: 10px;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.14;
+  letter-spacing: -0.05em;
+}
+
+.bridge-grid p {
+  max-width: 780px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .section {
   padding: 88px 0;
 }
@@ -1441,6 +1472,7 @@ textarea {
   .fit-grid,
   .case-hero-grid,
   .case-detail-grid,
+  .bridge-grid,
   .inquiry-grid {
     grid-template-columns: 1fr;
   }
