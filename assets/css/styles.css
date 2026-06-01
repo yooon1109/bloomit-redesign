@@ -2720,3 +2720,63 @@ textarea {
 }
 .cg-hero-copy h1 .cg-word-wrap,
 .corporate-template-page h2.cg-text-reveal .cg-word-wrap { overflow:hidden; }
+
+/* Second motion pass: closer to the reference site's Lenis + dual cursor feel. */
+.corporate-template-page { overscroll-behavior:none; }
+.cg-cursor { display:none; }
+@media (hover: hover) and (pointer: fine) {
+  .cg-cursor-dot,
+  .cg-cursor-ring {
+    position:fixed;
+    left:0;
+    top:0;
+    z-index:310;
+    pointer-events:none;
+    opacity:0;
+    mix-blend-mode:difference;
+    transition:opacity .22s ease, width .32s ease, height .32s ease, margin .32s ease, background .32s ease, border-color .32s ease;
+    will-change:transform;
+  }
+  .cg-cursor-dot { width:8px; height:8px; margin:-4px 0 0 -4px; border-radius:50%; background:#fff; }
+  .cg-cursor-ring { width:32px; height:32px; margin:-16px 0 0 -16px; border:1px solid rgba(255,255,255,.58); border-radius:50%; }
+  .cg-cursor-dot.is-visible,
+  .cg-cursor-ring.is-visible { opacity:1; }
+  .cg-cursor-ring.is-hover { width:64px; height:64px; margin:-32px 0 0 -32px; border-color:rgba(255,255,255,.42); background:rgba(255,255,255,.1); backdrop-filter:blur(1px); }
+}
+.cg-hero-image::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 23% 31%, rgba(255,255,255,.9) 0 1px, transparent 1px),
+    radial-gradient(circle at 71% 67%, rgba(255,255,255,.55) 0 1px, transparent 1px);
+  background-size:7px 7px, 11px 11px;
+  opacity:.026;
+  pointer-events:none;
+}
+.cg-loader-content span,
+.cg-brand b,
+.cg-nav,
+.cg-contact { letter-spacing:.14em; }
+.cg-service-grid article::before,
+.cg-insight-grid article::before {
+  content:"";
+  display:block;
+  width:0;
+  height:1px;
+  margin:-1px 0 26px;
+  background:var(--cg-brass);
+  transition:width .9s cubic-bezier(.16,1,.3,1);
+}
+.cg-service-grid article.is-visible::before,
+.cg-insight-grid article.is-visible::before { width:44px; }
+.cg-feature-insight::before { display:none !important; }
+.cg-feature-insight img { transform:scale(1.035); transition:transform 1.4s cubic-bezier(.16,1,.3,1), filter 1.4s ease; filter:saturate(.92); }
+.cg-feature-insight:hover img { transform:scale(1.07); filter:saturate(1); }
+.cg-image-story { overflow:visible; }
+.cg-image-story img { clip-path:inset(0 0 0 0); transition:transform .18s linear, clip-path 1.15s cubic-bezier(.16,1,.3,1), filter 1.15s ease; filter:saturate(.9); }
+.cg-image-story img.cg-reveal:not(.is-visible) { clip-path:inset(0 0 18% 0); }
+.cg-image-story img.cg-reveal.is-visible { clip-path:inset(0 0 0 0); filter:saturate(1); }
+/* Reference-site reveal uses clean y/opacity, not blur. */
+.cg-reveal { filter:none; transition:opacity 1.05s cubic-bezier(.16,1,.3,1), transform 1.05s cubic-bezier(.16,1,.3,1); }
+.cg-reveal.is-visible { filter:none; }
