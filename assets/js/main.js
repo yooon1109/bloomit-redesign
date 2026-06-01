@@ -487,27 +487,10 @@
     let heroCurrent = 0;
     let storyTarget = 0;
     let storyCurrent = 0;
-    let smoothTarget = window.scrollY;
-    let smoothCurrent = window.scrollY;
-    let smoothActive = false;
-    const canSmoothWheel = finePointer && !reduceMotion;
-    const clampScroll = (value) => Math.min(Math.max(0, value), Math.max(1, document.documentElement.scrollHeight - window.innerHeight));
-    const smoothTo = (top) => {
-      smoothTarget = clampScroll(top);
-      if (!canSmoothWheel) {
-        window.scrollTo({ top: smoothTarget, behavior: reduceMotion ? 'auto' : 'smooth' });
-        return;
-      }
-      smoothActive = true;
-    };
     const updateTargets = () => {
       page.classList.toggle('cg-scrolled', window.scrollY > 18);
       const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       if (scrollBar) scrollBar.style.height = `${Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100))}%`;
-      if (!smoothActive) {
-        smoothTarget = window.scrollY;
-        smoothCurrent = window.scrollY;
-      }
       if (reduceMotion) return;
       const hero = document.querySelector('[data-cg-hero]');
       if (hero) heroTarget = Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / Math.max(1, hero.offsetHeight)));
@@ -518,41 +501,14 @@
       }
     };
     const raf = () => {
-      if (canSmoothWheel && smoothActive) {
-        smoothCurrent += (smoothTarget - smoothCurrent) * 0.105;
-        if (Math.abs(smoothTarget - smoothCurrent) < 0.45) {
-          smoothCurrent = smoothTarget;
-          smoothActive = false;
-        }
-        window.scrollTo(0, smoothCurrent);
-      }
-      heroCurrent += (heroTarget - heroCurrent) * 0.075;
-      storyCurrent += (storyTarget - storyCurrent) * 0.075;
+      heroCurrent += (heroTarget - heroCurrent) * 0.09;
+      storyCurrent += (storyTarget - storyCurrent) * 0.09;
       page.style.setProperty('--cg-scroll', heroCurrent.toFixed(3));
       page.style.setProperty('--cg-story', storyCurrent.toFixed(3));
       window.requestAnimationFrame(raf);
     };
-    if (canSmoothWheel) {
-      window.addEventListener('wheel', (event) => {
-        if (event.ctrlKey || event.metaKey || event.defaultPrevented || event.target.closest('input, textarea, select, [data-no-smooth]')) return;
-        event.preventDefault();
-        smoothTarget = clampScroll(smoothTarget + event.deltaY * 0.9);
-        smoothActive = true;
-      }, { passive: false });
-      window.addEventListener('keydown', (event) => {
-        const keys = { PageDown: window.innerHeight * 0.82, PageUp: -window.innerHeight * 0.82, Home: -Infinity, End: Infinity, ArrowDown: 90, ArrowUp: -90, Space: event.shiftKey ? -window.innerHeight * 0.82 : window.innerHeight * 0.82 };
-        if (!(event.key in keys) || event.target.closest('input, textarea, select')) return;
-        event.preventDefault();
-        const delta = keys[event.key];
-        smoothTarget = delta === Infinity ? clampScroll(Infinity) : delta === -Infinity ? 0 : clampScroll(smoothTarget + delta);
-        smoothActive = true;
-      });
-    }
     window.addEventListener('scroll', updateTargets, { passive: true });
-    window.addEventListener('resize', () => {
-      smoothTarget = clampScroll(smoothTarget);
-      updateTargets();
-    });
+    window.addEventListener('resize', updateTargets);
     updateTargets();
     raf();
 
@@ -563,7 +519,7 @@
         const target = document.querySelector(id);
         if (!target) return;
         event.preventDefault();
-        smoothTo(Math.max(0, target.offsetTop - 72));
+        window.scrollTo({ top: Math.max(0, target.offsetTop - 72), behavior: reduceMotion ? 'auto' : 'smooth' });
       });
     });
 
