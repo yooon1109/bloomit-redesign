@@ -534,3 +534,9 @@
 .template-shot.vision-ai {
   background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(8, 9, 10, 0.72)), url("../images/templates/tech/tech-hero.jpg");
 }
+.template-shot.corporate-branding {
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(180deg, rgba(27, 23, 20, 0.08), rgba(27, 23, 20, 0.76)), url("../images/templates/corporate/corporate-hero.jpg");
+}

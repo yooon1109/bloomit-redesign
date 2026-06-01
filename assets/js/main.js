@@ -398,6 +398,74 @@
   };
 
 
+  const setupCorporateTemplate = () => {
+    const page = document.querySelector('.corporate-template-page');
+    if (!page) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const update = () => {
+      page.classList.toggle('cg-scrolled', window.scrollY > 18);
+      if (!reduceMotion) {
+        const hero = document.querySelector('[data-cg-hero]');
+        if (hero) {
+          const progress = Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / Math.max(1, hero.offsetHeight)));
+          page.style.setProperty('--cg-scroll', progress.toFixed(3));
+        }
+        const story = document.querySelector('[data-cg-story]');
+        if (story) {
+          const rect = story.getBoundingClientRect();
+          const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / Math.max(1, window.innerHeight + rect.height)));
+          page.style.setProperty('--cg-story', progress.toFixed(3));
+        }
+      }
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+
+    const targets = [...document.querySelectorAll('.cg-intro-grid, .cg-orbit-grid > *, .cg-service-head, .cg-service-grid article, .cg-image-story > *, .cg-insights-head, .cg-insight-grid article, .cg-contact-panel')];
+    targets.forEach((el, index) => {
+      el.classList.add('cg-reveal');
+      el.style.setProperty('--cg-delay', `${Math.min(index % 5, 4) * 55}ms`);
+    });
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      targets.forEach((el) => el.classList.add('is-visible'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+      targets.forEach((el) => io.observe(el));
+    }
+
+    const panelCopy = {
+      investors: ['Investors', 'Risk-aware narrative', '성장 기회와 실행 리스크를 균형 있게 보여주는 투자 커뮤니케이션 구조.'],
+      partners: ['Partners', 'Shared operating model', '협업 방식, 현지 실행력, 커뮤니케이션 원칙을 명확히 보여주는 파트너십 구조.'],
+      clients: ['Clients', 'Clear enterprise value', '구매자가 빠르게 이해할 수 있도록 서비스 가치와 적용 사례를 정돈한 정보 구조.'],
+      media: ['Media', 'Consistent public story', '기사, 리포트, 발표 자료에서 반복해 사용할 수 있는 핵심 메시지 체계.'],
+    };
+    const note = document.querySelector('[data-cg-note]');
+    const orbitButtons = [...document.querySelectorAll('[data-cg-panel]')];
+    const setPanel = (key) => {
+      const copy = panelCopy[key] || panelCopy.investors;
+      orbitButtons.forEach((button) => button.classList.toggle('is-active', button.dataset.cgPanel === key));
+      if (!note) return;
+      note.classList.add('is-switching');
+      window.setTimeout(() => {
+        note.innerHTML = `<span>${copy[0]}</span><h3>${copy[1]}</h3><p>${copy[2]}</p>`;
+        note.classList.remove('is-switching');
+      }, 120);
+    };
+    orbitButtons.forEach((button) => {
+      button.addEventListener('mouseenter', () => setPanel(button.dataset.cgPanel));
+      button.addEventListener('focus', () => setPanel(button.dataset.cgPanel));
+      button.addEventListener('click', () => setPanel(button.dataset.cgPanel));
+    });
+  };
+
+
   window.addEventListener("scroll", setActiveLink, { passive: true });
   setActiveLink();
   setupReveal();
@@ -405,4 +473,5 @@
   setupLegalTemplate();
   setupBaekhwaTemplateInteractions();
   setupTechTemplate();
+  setupCorporateTemplate();
 })();
