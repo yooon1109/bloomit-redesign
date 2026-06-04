@@ -544,3 +544,18 @@
   background: rgba(32, 32, 32, .84);
   color: #fff8ef;
 }
+.template-shot.corporate-branding {
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(180deg, rgba(27, 23, 20, 0.08), rgba(27, 23, 20, 0.76)), url("../images/templates/corporate/corporate-hero.jpg");
+}
+
+.template-shot.academy-lab {
+  background:
+    radial-gradient(circle at 20% 24%, rgba(255, 255, 255, 0.72), transparent 22%),
+    linear-gradient(135deg, #ff9d19 0%, #ffd899 35%, #62c3cf 68%, #b9cf00 100%);
+}
+.template-shot.academy-lab span {
+  text-shadow: 0 3px 0 rgba(255, 255, 255, 0.42);
+}

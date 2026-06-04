@@ -502,6 +502,313 @@
     syncNav();
   };
 
+
+  const setupCorporateTemplate = () => {
+    const page = document.querySelector('.corporate-template-page');
+    if (!page) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    const splitText = (el) => {
+      if (!el || el.dataset.cgSplitDone) return;
+      const words = el.textContent.trim().split(/\s+/);
+      el.innerHTML = words.map((word, index) => `
+        <span class="cg-word-wrap"><span class="cg-word" style="--cg-word-delay:${index * 26}ms">${word}</span></span>
+      `).join(' ');
+      el.dataset.cgSplitDone = 'true';
+      el.classList.add('cg-text-reveal');
+    };
+    document.querySelectorAll('[data-cg-split]').forEach(splitText);
+
+    const loaderBar = document.querySelector('[data-cg-loader-bar]');
+    const loaderCount = document.querySelector('[data-cg-loader-count]');
+    const finishIntro = () => {
+      page.classList.add('cg-loaded');
+      window.setTimeout(() => {
+        page.classList.add('cg-ready');
+        document.querySelector('.cg-hero-copy h1')?.classList.add('is-visible');
+        document.querySelector('.cg-hero-card')?.classList.add('is-visible');
+      }, reduceMotion ? 0 : 260);
+    };
+    if (reduceMotion) {
+      if (loaderBar) loaderBar.style.width = '100%';
+      if (loaderCount) loaderCount.textContent = '100%';
+      finishIntro();
+    } else {
+      let progress = 0;
+      const timer = window.setInterval(() => {
+        const step = progress < 72 ? 7 + Math.random() * 10 : 2 + Math.random() * 5;
+        progress = Math.min(100, Math.round(progress + step));
+        if (loaderBar) loaderBar.style.width = `${progress}%`;
+        if (loaderCount) loaderCount.textContent = `${progress}%`;
+        if (progress >= 100) {
+          window.clearInterval(timer);
+          window.setTimeout(finishIntro, 320);
+        }
+      }, 120);
+    }
+
+    if (finePointer && !reduceMotion) {
+      const dot = document.createElement('div');
+      const ring = document.createElement('div');
+      dot.className = 'cg-cursor-dot';
+      ring.className = 'cg-cursor-ring';
+      page.append(dot, ring);
+      let targetX = window.innerWidth / 2;
+      let targetY = window.innerHeight / 2;
+      let dotX = targetX;
+      let dotY = targetY;
+      let ringX = targetX;
+      let ringY = targetY;
+      window.addEventListener('pointermove', (event) => {
+        targetX = event.clientX;
+        targetY = event.clientY;
+        dot.classList.add('is-visible');
+        ring.classList.add('is-visible');
+      }, { passive: true });
+      document.querySelectorAll('a, button, [data-cursor]').forEach((el) => {
+        el.addEventListener('pointerenter', () => ring.classList.add('is-hover'));
+        el.addEventListener('pointerleave', () => ring.classList.remove('is-hover'));
+      });
+      const follow = () => {
+        dotX += (targetX - dotX) * 0.56;
+        dotY += (targetY - dotY) * 0.56;
+        ringX += (targetX - ringX) * 0.18;
+        ringY += (targetY - ringY) * 0.18;
+        dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
+        ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+        window.requestAnimationFrame(follow);
+      };
+      follow();
+    }
+
+    const scrollUI = document.createElement('div');
+    scrollUI.className = 'cg-scroll-ui';
+    scrollUI.innerHTML = '<span>Scroll</span><i><b></b></i>';
+    page.appendChild(scrollUI);
+    const scrollBar = scrollUI.querySelector('b');
+
+    let heroTarget = 0;
+    let heroCurrent = 0;
+    let storyTarget = 0;
+    let storyCurrent = 0;
+    const updateTargets = () => {
+      page.classList.toggle('cg-scrolled', window.scrollY > 18);
+      const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      if (scrollBar) scrollBar.style.height = `${Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100))}%`;
+      if (reduceMotion) return;
+      const hero = document.querySelector('[data-cg-hero]');
+      if (hero) heroTarget = Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / Math.max(1, hero.offsetHeight)));
+      const story = document.querySelector('[data-cg-story]');
+      if (story) {
+        const rect = story.getBoundingClientRect();
+        storyTarget = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / Math.max(1, window.innerHeight + rect.height)));
+      }
+    };
+    const raf = () => {
+      heroCurrent += (heroTarget - heroCurrent) * 0.09;
+      storyCurrent += (storyTarget - storyCurrent) * 0.09;
+      page.style.setProperty('--cg-scroll', heroCurrent.toFixed(3));
+      page.style.setProperty('--cg-story', storyCurrent.toFixed(3));
+      window.requestAnimationFrame(raf);
+    };
+    window.addEventListener('scroll', updateTargets, { passive: true });
+    window.addEventListener('resize', updateTargets);
+    updateTargets();
+    raf();
+
+    document.querySelectorAll('.corporate-template-page a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const id = link.getAttribute('href');
+        if (!id || id === '#') return;
+        const target = document.querySelector(id);
+        if (!target) return;
+        event.preventDefault();
+        window.scrollTo({ top: Math.max(0, target.offsetTop - 72), behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+    });
+
+    const revealSelectors = [
+      '.cg-eyebrow', '.cg-text-reveal', '.cg-intro-grid > p', '.cg-orbit-grid > div > p:not(.cg-eyebrow)',
+      '.cg-orbit', '.cg-orbit-note', '.cg-service-grid article', '.cg-image-story img', '.cg-image-story div > p',
+      '.cg-insights-head > p', '.cg-insight-grid article', '.cg-contact-panel', '.cg-footer > *'
+    ].join(',');
+    const targets = [...document.querySelectorAll(revealSelectors)].filter((el) => !el.closest('.cg-hero-copy'));
+    targets.forEach((el, index) => {
+      el.classList.add('cg-reveal');
+      el.style.setProperty('--cg-delay', `${Math.min(index % 5, 4) * 48}ms`);
+    });
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      targets.forEach((el) => el.classList.add('is-visible'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px 10% 0px' });
+      targets.forEach((el) => io.observe(el));
+    }
+
+    const panelCopy = {
+      investors: ['Investors', 'Risk-aware narrative', '성장 기회와 실행 리스크를 균형 있게 보여주는 투자 커뮤니케이션 구조.'],
+      partners: ['Partners', 'Shared operating model', '협업 방식, 현지 실행력, 커뮤니케이션 원칙을 명확히 보여주는 파트너십 구조.'],
+      clients: ['Clients', 'Clear enterprise value', '구매자가 빠르게 이해할 수 있도록 서비스 가치와 적용 사례를 정돈한 정보 구조.'],
+      media: ['Media', 'Consistent public story', '기사, 리포트, 발표 자료에서 반복해 사용할 수 있는 핵심 메시지 체계.'],
+    };
+    const note = document.querySelector('[data-cg-note]');
+    const orbitButtons = [...document.querySelectorAll('[data-cg-panel]')];
+    let activeKey = 'investors';
+    let orbitTimer;
+    const setPanel = (key) => {
+      if (!panelCopy[key] || activeKey === key) return;
+      activeKey = key;
+      const copy = panelCopy[key];
+      orbitButtons.forEach((button) => button.classList.toggle('is-active', button.dataset.cgPanel === key));
+      if (!note) return;
+      note.classList.add('is-switching');
+      window.setTimeout(() => {
+        note.innerHTML = `<span>${copy[0]}</span><h3>${copy[1]}</h3><p>${copy[2]}</p>`;
+        note.classList.remove('is-switching');
+      }, 180);
+    };
+    const startOrbit = () => {
+      if (reduceMotion) return;
+      window.clearInterval(orbitTimer);
+      orbitTimer = window.setInterval(() => {
+        const index = Math.max(0, orbitButtons.findIndex((button) => button.dataset.cgPanel === activeKey));
+        const next = orbitButtons[(index + 1) % orbitButtons.length];
+        if (next) setPanel(next.dataset.cgPanel);
+      }, 3600);
+    };
+    orbitButtons.forEach((button) => {
+      button.addEventListener('mouseenter', () => { window.clearInterval(orbitTimer); setPanel(button.dataset.cgPanel); });
+      button.addEventListener('focus', () => { window.clearInterval(orbitTimer); setPanel(button.dataset.cgPanel); });
+      button.addEventListener('click', () => { window.clearInterval(orbitTimer); setPanel(button.dataset.cgPanel); });
+      button.addEventListener('mouseleave', startOrbit);
+      button.addEventListener('blur', startOrbit);
+    });
+    startOrbit();
+  };
+
+
+  const setupAcademyTemplate = () => {
+    const page = document.querySelector('.academy-template-page');
+    if (!page) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const update = () => {
+      page.classList.toggle('fx-scrolled', window.scrollY > 18);
+      const hero = document.querySelector('[data-fx-hero]');
+      if (!hero || reduceMotion) return;
+      const progress = Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / Math.max(1, hero.offsetHeight)));
+      page.style.setProperty('--fx-scroll', progress.toFixed(3));
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+
+    const wordWrap = document.querySelector('[data-fx-words]');
+    const words = wordWrap ? [...wordWrap.querySelectorAll('span')] : [];
+    let wordIndex = Math.max(0, words.findIndex((word) => word.classList.contains('is-active')));
+    if (words.length > 1 && !reduceMotion) {
+      window.setInterval(() => {
+        const current = words[wordIndex];
+        const nextIndex = (wordIndex + 1) % words.length;
+        const next = words[nextIndex];
+        current.classList.remove('is-active');
+        current.classList.add('is-exit');
+        next.classList.add('is-active');
+        window.setTimeout(() => current.classList.remove('is-exit'), 720);
+        wordIndex = nextIndex;
+      }, 2100);
+    }
+
+    const revealSelectors = [
+      '.fx-reveal-seed', '.fx-video', '.fx-counts article', '.fx-reason-grid article', '.fx-wrong-stage > *',
+      '.fx-curriculum-card', '.fx-filter-card', '.fx-filter-steps li', '.fx-curriculum-map section', '.fx-module-row article', '.fx-plan-banner',
+      '.fx-principles article', '.fx-type-grid article', '.fx-class-card', '.fx-process-flow article', '.fx-management-grid article', '.fx-test-prep article', '.fx-school-program',
+      '.fx-tabs', '.fx-case-rail article', '.fx-counsel-grid > div', '.fx-level-test', '.fx-materials article', '.fx-location-info article', '.fx-map-demo', '.fx-location-banner', '.fx-faq-list details'
+    ].join(',');
+    const targets = [...document.querySelectorAll(revealSelectors)];
+    targets.forEach((el, index) => {
+      el.classList.add('fx-reveal');
+      el.style.setProperty('--fx-delay', `${Math.min(index % 5, 4) * 48}ms`);
+    });
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      targets.forEach((el) => el.classList.add('is-visible'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0.06, rootMargin: '0px 0px -7% 0px' });
+      targets.forEach((el) => io.observe(el));
+    }
+
+    const counters = [...document.querySelectorAll('.fx-counter')];
+    const animateCounter = (counter) => {
+      const end = Number(counter.dataset.count || counter.textContent || 0);
+      if (!Number.isFinite(end)) return;
+      if (reduceMotion) {
+        counter.textContent = end.toLocaleString('ko-KR');
+        return;
+      }
+      const start = performance.now();
+      const duration = 1400;
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        counter.textContent = Math.round(end * eased).toLocaleString('ko-KR');
+        if (t < 1) window.requestAnimationFrame(tick);
+      };
+      window.requestAnimationFrame(tick);
+    };
+    if (counters.length) {
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        counters.forEach(animateCounter);
+      } else {
+        const counterObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting || entry.target.dataset.counted) return;
+            entry.target.dataset.counted = 'true';
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.45 });
+        counters.forEach((counter) => counterObserver.observe(counter));
+      }
+    }
+
+    const caseCards = [...document.querySelectorAll('[data-fx-cases] [data-group]')];
+    document.querySelectorAll('[data-fx-tab]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const group = button.dataset.fxTab;
+        document.querySelectorAll('[data-fx-tab]').forEach((item) => item.classList.toggle('is-active', item === button));
+        caseCards.forEach((card) => {
+          card.hidden = card.dataset.group !== group;
+        });
+      });
+    });
+    caseCards.forEach((card) => { card.hidden = card.dataset.group !== 'change'; });
+
+    const navLinks = [...document.querySelectorAll('.fx-nav a[href^="#"]')];
+    const sections = navLinks.map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const syncNav = () => {
+      const y = window.scrollY + 120;
+      let current = sections[0]?.id;
+      sections.forEach((section) => {
+        if (section.offsetTop <= y) current = section.id;
+      });
+      navLinks.forEach((link) => link.classList.toggle('is-active', link.getAttribute('href') === `#${current}`));
+    };
+    window.addEventListener('scroll', syncNav, { passive: true });
+    syncNav();
+  };
+
+
   window.addEventListener("scroll", setActiveLink, { passive: true });
   setActiveLink();
   setupReveal();
@@ -510,4 +817,6 @@
   setupBaekhwaTemplateInteractions();
   setupTechTemplate();
   setupPlasticTemplate();
+  setupCorporateTemplate();
+  setupAcademyTemplate();
 })();
