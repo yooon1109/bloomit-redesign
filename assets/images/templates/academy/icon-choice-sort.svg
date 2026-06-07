@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="선택지 판단 정리 아이콘">
+  <defs>
+    <linearGradient id="g" x1="18" y1="14" x2="78" y2="82" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e27668"/>
+      <stop offset="1" stop-color="#6d65d8"/>
+    </linearGradient>
+  </defs>
+  <rect x="18" y="18" width="60" height="16" rx="8" fill="#fff" stroke="#e6e1f0" stroke-width="4"/>
+  <rect x="18" y="40" width="60" height="16" rx="8" fill="#fff" stroke="#e6e1f0" stroke-width="4"/>
+  <rect x="18" y="62" width="60" height="16" rx="8" fill="#f6f2ff" stroke="url(#g)" stroke-width="4"/>
+  <path d="M30 26h14M30 48h14M30 70h14" fill="none" stroke="#202034" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+  <path d="M62 68l6 6 12-16" fill="none" stroke="#5fbfca" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
