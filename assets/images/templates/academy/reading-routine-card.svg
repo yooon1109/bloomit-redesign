@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 760" role="img" aria-labelledby="title desc">
+  <title id="title">영어문제 5단계 독해 루틴</title>
+  <desc id="desc">구문 분석, 핵심 단서, 근거 위치, 선택지 소거, 정답 확인으로 이어지는 영어 독해 풀이 이미지</desc>
+  <defs>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6d65d8"/>
+      <stop offset=".48" stop-color="#68c2cf"/>
+      <stop offset="1" stop-color="#e27668"/>
+    </linearGradient>
+    <linearGradient id="paperBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f4ff"/>
+      <stop offset="1" stop-color="#eef9f8"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-15%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#4b4280" flood-opacity=".10"/>
+    </filter>
+    <filter id="smallShadow" x="-12%" y="-16%" width="124%" height="132%">
+      <feDropShadow dx="0" dy="9" stdDeviation="10" flood-color="#4b4280" flood-opacity=".08"/>
+    </filter>
+    <style>
+      text {
+        font-family: Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
+        letter-spacing: -0.045em;
+      }
+      .ink { fill: #202034; }
+      .muted { fill: #6f747c; }
+      .blue { fill: #6d65d8; }
+      .teal { fill: #5fbfca; }
+      .orange { fill: #e27668; }
+      .bold { font-weight: 900; }
+      .heavy { font-weight: 950; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="760" rx="32" fill="#fffdfa"/>
+  <rect width="1600" height="104" rx="32" fill="url(#head)"/>
+  <path d="M789 102h44l-22 28z" fill="url(#head)"/>
+  <text x="800" y="68" text-anchor="middle" fill="#fff" font-size="38" class="heavy">영어문제는 이렇게 풉니다</text>
+  <text x="1078" y="68" fill="#fff" font-size="25" class="bold" opacity=".9">(5단계 독해 루틴)</text>
+
+  <g transform="translate(70 162)">
+    <rect width="670" height="560" rx="32" fill="url(#paperBg)" stroke="#e3e0f4" stroke-width="1.5" filter="url(#softShadow)"/>
+    <rect x="36" y="36" width="598" height="252" rx="24" fill="#fff" stroke="#dcebee" stroke-width="1.5"/>
+    <text x="68" y="86" font-size="22" class="blue heavy">Reading Note</text>
+
+    <rect x="68" y="108" width="500" height="52" rx="26" fill="#eeeafa"/>
+    <rect x="68" y="128" width="112" height="30" rx="8" fill="#bedee6"/>
+    <text x="82" y="131" font-size="16" class="blue bold">핵심어</text>
+    <text x="82" y="151" font-size="25" class="ink heavy">However</text>
+    <text x="188" y="151" font-size="25" class="ink heavy">, the speaker changes her opinion</text>
+    <text x="68" y="196" font-size="25" class="ink heavy">after seeing the result.</text>
+
+    <rect x="68" y="222" width="500" height="48" rx="10" fill="#8fd0dd"/>
+    <text x="82" y="252" font-size="20" class="ink heavy">근거 일치: 마지막 문장에서 정답 근거 확인</text>
+
+    <g transform="translate(36 310)">
+      <rect width="598" height="62" rx="18" fill="#fff" stroke="#dfe7ef" stroke-width="1.5"/>
+      <circle cx="40" cy="31" r="22" fill="#f1f3f4"/>
+      <text x="40" y="39" text-anchor="middle" font-size="18" class="muted heavy">A</text>
+      <text x="78" y="39" font-size="20" class="muted bold">본문 내용과 반대되는 선택지</text>
+    </g>
+    <g transform="translate(36 390)">
+      <rect width="598" height="62" rx="18" fill="#fff" stroke="#dfe7ef" stroke-width="1.5"/>
+      <circle cx="40" cy="31" r="22" fill="#f1f3f4"/>
+      <text x="40" y="39" text-anchor="middle" font-size="18" class="muted heavy">B</text>
+      <text x="78" y="39" font-size="20" class="muted bold">근거가 부족한 선택지</text>
+    </g>
+    <g transform="translate(36 470)">
+      <rect width="598" height="62" rx="18" fill="#fff" stroke="#b9b2f3" stroke-width="2" filter="url(#smallShadow)"/>
+      <circle cx="40" cy="31" r="22" fill="#6d65d8"/>
+      <text x="40" y="39" text-anchor="middle" font-size="18" fill="#fff" class="heavy">C</text>
+      <text x="78" y="39" font-size="20" class="ink heavy">본문 근거와 정확히 연결되는 선택지</text>
+      <rect x="510" y="18" width="58" height="26" rx="13" fill="#eaf8f7"/>
+      <text x="539" y="37" text-anchor="middle" font-size="14" class="teal heavy">정답</text>
+    </g>
+  </g>
+
+  <g transform="translate(820 164)">
+    <g filter="url(#smallShadow)">
+      <rect width="710" height="76" rx="18" fill="#fff" stroke="#e3e0f4"/>
+      <rect x="24" y="22" width="88" height="32" rx="16" fill="#f0eeff"/>
+      <text x="68" y="45" text-anchor="middle" font-size="21" class="blue heavy">1차 구문</text>
+      <text x="178" y="47" font-size="23" class="ink heavy">주어, 동사, 수식어, 접속 관계 표시</text>
+    </g>
+    <path d="M355 82v10" stroke="#e27668" stroke-width="3" stroke-linecap="round"/>
+    <path d="M348 90l7 9 7-9" fill="#e27668"/>
+    <g transform="translate(0 96)" filter="url(#smallShadow)">
+      <rect width="710" height="76" rx="18" fill="#fff" stroke="#e3e0f4"/>
+      <rect x="24" y="22" width="88" height="32" rx="16" fill="#f0eeff"/>
+      <text x="68" y="45" text-anchor="middle" font-size="21" class="blue heavy">2차 단서</text>
+      <text x="178" y="47" font-size="23" class="ink heavy">핵심어와 연결어로 문장 흐름 정리</text>
+    </g>
+    <path d="M355 178v10" stroke="#e27668" stroke-width="3" stroke-linecap="round"/>
+    <path d="M348 186l7 9 7-9" fill="#e27668"/>
+    <g transform="translate(0 192)" filter="url(#smallShadow)">
+      <rect width="710" height="76" rx="18" fill="#fff" stroke="#e3e0f4"/>
+      <rect x="24" y="22" width="88" height="32" rx="16" fill="#f0eeff"/>
+      <text x="68" y="45" text-anchor="middle" font-size="21" class="blue heavy">3차 위치</text>
+      <text x="178" y="47" font-size="23" class="ink heavy">문제가 요구하는 정답 근거 위치 찾기</text>
+    </g>
+    <path d="M355 274v10" stroke="#e27668" stroke-width="3" stroke-linecap="round"/>
+    <path d="M348 282l7 9 7-9" fill="#e27668"/>
+    <g transform="translate(0 288)" filter="url(#smallShadow)">
+      <rect width="710" height="76" rx="18" fill="#fff" stroke="#e3e0f4"/>
+      <rect x="24" y="22" width="88" height="32" rx="16" fill="#f0eeff"/>
+      <text x="68" y="45" text-anchor="middle" font-size="21" class="blue heavy">4차 소거</text>
+      <text x="178" y="47" font-size="23" class="ink heavy">본문과 맞지 않는 선택지 제거</text>
+    </g>
+    <path d="M355 370v10" stroke="#e27668" stroke-width="3" stroke-linecap="round"/>
+    <path d="M348 378l7 9 7-9" fill="#e27668"/>
+    <g transform="translate(0 384)" filter="url(#smallShadow)">
+      <rect width="710" height="76" rx="18" fill="#fff" stroke="#e3e0f4"/>
+      <rect x="24" y="22" width="88" height="32" rx="16" fill="#f0eeff"/>
+      <text x="68" y="45" text-anchor="middle" font-size="21" class="blue heavy">5차 확인</text>
+      <text x="178" y="47" font-size="23" class="ink heavy">정답 선택지와 본문 근거 연결</text>
+    </g>
+    <path d="M355 466v10" stroke="#e27668" stroke-width="3" stroke-linecap="round"/>
+    <path d="M348 474l7 9 7-9" fill="#e27668"/>
+    <g transform="translate(0 480)" filter="url(#smallShadow)">
+      <rect width="710" height="76" rx="18" fill="#fff" stroke="#e3e0f4"/>
+      <rect x="24" y="22" width="88" height="32" rx="16" fill="#f0eeff"/>
+      <text x="68" y="45" text-anchor="middle" font-size="21" class="blue heavy">최종 답안</text>
+      <text x="178" y="47" font-size="23" class="ink heavy">이유를 설명할 수 있는 정답 완성</text>
+    </g>
+  </g>
+</svg>
